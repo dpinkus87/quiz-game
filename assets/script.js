@@ -3,7 +3,10 @@ var index = 0;
 var win = document.querySelector(".win");
 var lose = document.querySelector(".lose");
 var timerElement = document.querySelector(".timer-count");
-var startButton = document.querySelector(".start-button")
+var startButton = document.querySelector("#start-button");
+var questionNum = 0
+var questionDisplay = document.getElementById("questions")
+
 
 var winCounter = 0;
 var loseCounter = 0;
@@ -11,22 +14,17 @@ var isWin = false;
 var timer;
 var timerCount;
 var choicesBtnEl;
-var time;
 
 
-// function init() {
-//     saveWins();
-//     saveLosses();
-// }
-
-// The startQuiz function starts the timer and loads the first quiz question
+// COMPLETED The startQuiz function starts the timer and loads the first quiz question
 function startQuiz() {
     timerCount = 60;
     quizQuestions();
     startTimer();
 }
 
-// The setTimer function starts and stops the timer and triggers winGame() and loseGame()
+
+// COMPLETED The setTimer function starts and stops the timer and updates winGame and loseGame
 function startTimer() {
     timer = setInterval(function () {
         timerCount--;
@@ -41,57 +39,53 @@ function startTimer() {
             clearInterval(timer);
             loseGame();
         }
-    }, 30000);
+    }, 1000);
 }
 
-// List of questions (object - arrays)
+// COMPLETED List of questions (object - arrays)
 
 function quizQuestions() {
     var questionList = [{
         question: "What is the heaviest organ in the human body?",
         answers: ["Brain", "Liver", "Heart", "Skin"],
-        correctAnswer: [1]
+        correctAnswer: "Liver"
     }, {
         question: "What type of food holds the world record for being the most stolen around the world?",
         answers: ["Waygu beef, cheese, chocolate, coffee"],
-        correctAnswer: [1]
+        correctAnswer: "cheese"
     }, {
         question: "On average, how many seeds are located on the outside of a strawberry",
         answers: ["500, 300, 200, 100"],
-        correctAnswer: [2]
+        correctAnswer: "200"
     }, {
         question: "What is the highest-grossing video game franchise to date?",
         answers: ["Pokemon, Mario, Call of Duty, Street Fighter"],
-        correctAnswer: [0]
+        correctAnswer: "Pokemon"
     }, {
         question: "Which country’s national animal is a unicorn?",
         answers: ["Denmark, France, New Zealand, Scotland"],
-        correctAnswer: [3]
+        correctAnswer: "Scotland"
     }]
 
-    for (var i = 0; i < questionList[0].answers.length; i++) {
-        var questionDisplay = document.createElement("questions")
-        questionDisplay.innerHTML = questionList[0].question[i]
+    // COMPLETED Display quiz question
+    questionDisplay.innerHTML = questionList[questionNum].question
 
-    }
-    for (var i = 0; i < questionList[0].answers.length; i++) {
+    // COMPLETED Create button for each answer dependant on current quiz question
+    for (var i = 0; i < 4; i++) {
         var answerButton = document.createElement("button")
-        answerButton.innerHTML = questionList[0].answers[i]
+        answerButton.innerHTML = questionList[questionNum].answers[i]
         document.getElementById("answers").append(answerButton)
-        console.log(quizQuestions);
+
+        // TODO get value for button, check if it matches correct answer string
+        answerButton.addEventListener("click", (this))
+        if( answerButton === quizQuestions.correctAnswer)
+        index++
     }
 
-    choicesBtnEl.addEventListener("click", function (event) {
-        if (event.target.textContent === quizQuestions[index].correctAnswer) {
-            quizQuestions();
-        } else {
-            time = time - 5;
-        }
-        index++;
-    })
 }
 
 startButton.addEventListener("click", startQuiz);
+
 
 // Updates win count on screen to local storage
 function saveWins() {

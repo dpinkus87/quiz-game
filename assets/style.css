@@ -1,7 +1,7 @@
 .scores 
 
 .timer {
-    height: 240px;
+    height: 120px;
     padding: 10px;
     background: #13293d;
     color: #fff;
@@ -9,20 +9,10 @@
   }
 
   .timer-text {
-    padding: 55px;
+    padding: 10px;
   }
 
-.start-button {
-    padding: 10px;
-    margin: 24px;
-    cursor: pointer;
-    font-size: 24px;
-    background-color: #247BA0;
-    color: white;
-}
-
-
-.next-button {
+.start {
     padding: 10px;
     margin: 24px;
     cursor: pointer;
@@ -39,9 +29,9 @@
     margin-top: 20px;
   }
 
-
   .win-loss-container {
     display: flex;
     justify-content: space-between;
-    margin-top: 16px;
+    margin-top: 5px;
+    height: 30px;
   }
